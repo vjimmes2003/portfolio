@@ -1,0 +1,352 @@
+/* 🌐 Reset y Box Sizing */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* 🌙 Variables globales */
+:root {
+  --bg-color: #1e1e1e;
+  --bg-alt: #2a2a2a;
+  --text-color: white;
+  --accent: #00ffaa;
+  --accent-dark: #00ddaa;
+  --card-bg: #333;
+  --tag-bg: #006666;
+  --log-bg: #111;
+  --log-color: lime;
+  --input-bg: #1f1f1f;
+  --shadow: #00000088;
+  --text-dark: #000;
+  --border-color: #444;
+}
+
+[data-theme="light"] {
+  --bg-color: #f5f7fa;
+  --bg-alt: #ffffff;
+  --text-color: #333333;
+  --accent: #99c1b9;
+  --accent-dark: #7aa9a1;
+  --card-bg: #ffffff;
+  --border-color: #dce0e6;
+  --input-bg: #eef1f4;
+  --shadow: #00000018;
+}
+[data-theme="minecraft"] {
+  --bg-color: #3c5227;
+  --bg-alt: #5a7e3e;
+  --text-color: #f1f9ec;
+  --accent: #8bc34a;
+  --accent-dark: #689f38;
+  --card-bg: #4b6e2c;
+  --tag-bg: #3e8c2e;
+  --input-bg: #2f401b;
+}
+
+[data-theme="discord"] {
+  --bg-color: #2c2f33;
+  --bg-alt: #23272a;
+  --text-color: #ffffff;
+  --accent: #5865f2;
+  --accent-dark: #4752c4;
+  --card-bg: #36393f;
+  --tag-bg: #7289da;
+  --input-bg: #40444b;
+}
+
+[data-theme="cyberpunk"] {
+  --bg-color: #0f0e17;
+  --bg-alt: #1a1a2e;
+  --text-color: #ffefff;
+  --accent: #ff00c8;
+  --accent-dark: #c600b3;
+  --card-bg: #2f1847;
+  --tag-bg: #ff1493;
+  --input-bg: #23182e;
+}
+
+[data-theme="scifi"] {
+  --bg-color: #0c0e1a;
+  --bg-alt: #1a1f2b;
+  --text-color: #e0f7ff;
+  --accent: #00d1ff;
+  --accent-dark: #0088aa;
+  --card-bg: #1e2a38;
+  --tag-bg: #00bcd4;
+  --input-bg: #121a24;
+}
+
+[data-theme="fantasy"] {
+  --bg-color: #251c2b;
+  --bg-alt: #3a2f4c;
+  --text-color: #fceff9;
+  --accent: #d9a6f0;
+  --accent-dark: #a671d2;
+  --card-bg: #4b3b5c;
+  --tag-bg: #8c52ff;
+  --input-bg: #2d213c;
+}
+
+
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: var(--bg-color);
+  font-family: 'Segoe UI', sans-serif;
+  color: var(--text-color);
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  position: relative;
+}
+
+h1, h2 {
+  text-align: center;
+  color: var(--accent);
+  margin-bottom: 1.5rem;
+}
+h1 {
+  font-size: 2.5rem;
+  margin-top: 2rem;
+}
+
+/* 🧱 Dashboard */
+.dashboard-page {
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* 💠 Grid de tarjetas con Flex */
+.server-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  width: 100%;
+}
+
+/* 📦 Server Card */
+.server-card {
+  flex: 1 1 45%;
+  background-color: var(--card-bg);
+  padding: 1.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 0 10px var(--shadow);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.server-card h2 {
+  margin: 0 0 1rem 0;
+  color: var(--accent);
+}
+
+.server-image,
+.server-card img {
+  width: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.server-card .tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.5rem;
+}
+
+.tag {
+  background-color: var(--tag-bg);
+  border-radius: 9999px;
+  padding: 4px 10px;
+  font-size: 0.8rem;
+}
+
+/* 🎛️ Botones */
+.button-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+.server-card button {
+  flex: 1;
+  min-width: 120px;
+  padding: 0.6rem 1rem;
+  border: none;
+  background-color: var(--accent);
+  color: var(--text-dark);
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+.server-card button:hover {
+  background-color: var(--accent-dark);
+}
+
+/* ⌨️ Consola */
+.log-box {
+  margin-top: 1rem;
+  width: 100%;
+}
+pre {
+  overflow-y: auto;
+  background: var(--log-bg);
+  color: var(--log-color);
+  padding: 10px;
+  border-radius: 6px;
+  font-family: monospace;
+  font-size: 0.85rem;
+  max-width: 100%;
+}
+
+/* 💬 Comando */
+.command-box {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  width: 100%;
+}
+.command-box input {
+  flex: 1;
+  padding: 0.5rem;
+  border-radius: 6px;
+  border: none;
+  background-color: var(--input-bg);
+  color: var(--text-color);
+  font-family: monospace;
+}
+.command-box button {
+  padding: 0.5rem 1rem;
+  background-color: var(--accent);
+  color: black;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.command-box button:hover {
+  background-color: var(--accent-dark);
+}
+
+/* 🌗 Toggle Tema */
+.theme-toggle {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  padding: 0.5rem 1rem;
+  max-width: 48px;
+  height: 48px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+  z-index: 1000;
+  background-color: var(--accent);
+  color: #000;
+  border: none;
+}
+
+.theme-toggle:hover {
+  background-color: var(--accent-dark);
+}
+
+/* ⬅️ Botón Volver */
+.back-button {
+  background-color: var(--bg-alt);
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s ease;
+  margin: 1rem auto;
+  display: block;
+}
+.back-button:hover {
+  background-color: var(--accent);
+  color: var(--bg-color);
+}
+
+/* 📄 Formularios */
+input,
+textarea {
+  width: 100%;
+  margin: 0.5rem 0 1rem 0;
+  padding: 0.6rem;
+  border-radius: 6px;
+  border: none;
+  background-color: var(--input-bg);
+  color: var(--text-color);
+  font-family: 'Segoe UI', sans-serif;
+}
+label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+/* 📌 Footer */
+.footer-section {
+  text-align: center;
+  font-size: 0.85rem;
+  color: #aaa;
+  border-top: 1px solid var(--border-color);
+  padding: 1rem 0;
+  margin-top: auto;
+}
+.footer-section a {
+  color: var(--accent);
+  text-decoration: none;
+}
+.footer-section a:hover {
+  text-decoration: underline;
+}
+
+/* 📱 Responsive */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2rem;
+  }
+
+  .button-row,
+  .command-box {
+    flex-direction: column;
+  }
+
+  .server-card {
+    flex: 1 1 100%;
+  }
+
+  .theme-toggle {
+    bottom: 1rem;
+    right: 1rem;
+    max-width: 48px;
+    width: 48px;
+    padding: 0;
+    font-size: 0;
+  }
+
+  .theme-toggle::before {
+    content: "☀️";
+    font-size: 1.2rem;
+  }
+
+  .footer-section {
+    font-size: 0.75rem;
+    padding: 0.5rem;
+  }
+}
